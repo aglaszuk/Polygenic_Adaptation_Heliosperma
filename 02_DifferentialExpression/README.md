@@ -1,6 +1,6 @@
 # RNA-seq analysis pipeline
 
-```
+
 Create table of read counts using FeatureCounts v. 1.6.3. Takes as input the individual bam files mapped using STAR.
 ```
  
