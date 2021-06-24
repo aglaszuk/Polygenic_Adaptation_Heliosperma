@@ -32,6 +32,16 @@ for file in *.fq; \
  --runThreadN 12; \
  done
  
+ nice -n 19 \
+ STAR \   \
+ --runMode genomeGenerate\ 
+ --runThreadN 4 \
+ --genomeDir /path/to/genome/dir \
+ --genomeFastaFiles /path/to/genome.scf.fasta \
+ --genomeSAindexNbases 12 \
+ --sjdbOverhang 99 \
+ --limitGenomeGenerateRAM 53000000000
+ 
  for file in *.fq; \
  do nice -n 19 \
  STAR \
