@@ -15,4 +15,4 @@ Create table of read counts using FeatureCounts v. 1.6.3. Takes as input the ind
  
   ```
 
-Scripts to perform DE analysis are above
+Scripts to perform DE analysis are above.
