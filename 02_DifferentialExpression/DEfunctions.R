@@ -1,4 +1,4 @@
-#Function to trim the data
+# Perform data trimming
 trimDat = function (counts) {
   data = read.table(counts,header= T, row.names = 1)
   print(paste0("Number of samples: ", dim(data)[2]))
@@ -8,7 +8,7 @@ trimDat = function (counts) {
   return(data)
 }
 
-#Function to produce edgeR data object
+# Produce edgeR data object
 makeObj = function (data){
   #define group variables
   groupGLM <- factor(c(rep("1.H",3),rep("3.H",3),rep("4.H",3), # Populations
@@ -25,7 +25,7 @@ makeObj = function (data){
   return(y)
 }
 
-#Function to estimate dispersion and fit GLM
+# Estimate dispersion and fit GLM
 fitGLM = function(obj) {
   groupGLM <- factor(c(rep("1.H",3),rep("3.H",3),rep("4.H",3), # Populations
                        rep("5.H",3),rep("1.L",3),rep("3.L",3),
@@ -35,7 +35,7 @@ fitGLM = function(obj) {
   GLM=glmFit(DGE,design = ModelDesign)
 }
 
-# Function to find DEGs
+# Find DEGs
 # LRT test to identify DE genes between ecotypes and plot as MA plot
 LRT_test = function (contr, glm, col, l){
   lrt = glmLRT(glm,contrast = contr)
@@ -79,7 +79,7 @@ LRT_test = function (contr, glm, col, l){
   dev.off()
 }
 
-# Function to find DEGs between pops
+# Find DEGs between pops
 # LRT test to identify DE genes between populations and plot as MA plot
 LRT_test_loc = function (contr, glm, l1,l2){
   lrt = glmLRT(glm,contrast = contr)
@@ -109,7 +109,7 @@ LRT_test_loc = function (contr, glm, l1,l2){
   dev.off()
 }
 
-# Function to produce a data table to be used as input in GOplot
+# Produce a data table to be used as input in GOplot
 makeGOplotTable <- function(contr,glm){
   lrt = glmLRT(glm,contrast = contr)
   res = lrt$table
@@ -131,7 +131,7 @@ makeGOplotTable <- function(contr,glm){
               col.names = T)
 }
 
-#Function to find overlpas between ecotype pairs
+# Find overlpas between ecotype pairs
 findOverlapsPair = function (contr1, contr2, col1, col2, l1,l2){
   lrt1 = glmLRT(GLM,contrast = contr1)
   lrt2 = glmLRT(GLM,contrast = contr2)
