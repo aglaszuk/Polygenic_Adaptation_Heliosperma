@@ -1,1 +1,1 @@
-# Pipeline to assemble and functionally annotate the reference genome of *Heliosperma pusillum*
+# Pipeline to structurally annotate the reference genome of *Heliosperma pusillum*
