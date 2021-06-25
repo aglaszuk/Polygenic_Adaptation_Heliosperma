@@ -1,0 +1,93 @@
+---
+title: "Differential expression analysis of H.pusillum ecotypes: plots"
+author: Aglaia Szukala
+description: Script to perform differential expression analysis plotting
+output: html_notebook
+---
+Load libraries
+```{r}
+# 
+library("edgeR")
+library("RUVSeq")
+library("HTSFilter")
+library("gplots")
+library("devtools")
+library("VennDiagram")
+library("yarrr")
+library("extrafont")
+require(gridExtra)
+# font_import()
+# loadfonts()
+# fonts()
+```
+ 
+Load table of read counts
+```{r}
+setwd("")
+data <- read.table("countsTable.txt",header= T, row.names = 1) 
+```
+
+Plot the per sample counts distribution
+Note: produces as many graphs as samples
+```{r}
+par(mfrow=c(2,3))
+for (col in 1:ncol(data)) {
+  hist(data[,col][sample(1:11900,100)], 
+       breaks = 50,
+       xlab = "read count",
+       main = paste0("Sample number ",col))
+}
+```
+
+Inspect distribution of log(cpm) and of expression variance of raw data
+```{r}
+par(mfrow=c(1,2))
+hist(log(cpm(data)),
+     breaks = 1000,
+     main = "Frequency of log(cpm)",
+     xlab = "Expression (log(cpm))")
+plot(apply(log(cpm(data)), 1, mean), apply(log(cpm(data)), 1, var), 
+     xlab="Mean expression (log(cpm))",
+     ylab="Variance of expression log(cpm)", 
+     main = "Expression Variance")
+```
+
+Inspect distribution of log(cpm) and of expression variance after data trimming
+```{r}
+data <- read.table("dataFileredCounts.txt",
+                   header= T, row.names = 1) 
+
+hist(log(cpm(data)),
+     breaks = 1000,
+     main = "Frequency of log(cpm)",
+     xlab = "Expression (log(cpm))")
+plot(apply(log(cpm(data)), 1, mean),apply(log(cpm(data)), 1, var), 
+     xlab="Mean expression (log(cpm))",
+     ylab="Variance of expression log(cpm)", 
+     main = "Expression Variance")
+```
+
+Plot PCA and MDS of read counts
+```{r}
+groupGLM <- factor(c(rep("1.H",3),rep("3.H",3),rep("4.H",3), # Populations
+                    rep("5.H",3),rep("1.L",3),rep("3.L",3),
+                    rep("4.L",3),rep("5.L",3)))
+y <- DGEList(counts=data,group=groupGLM)
+
+locs <- c(rep("#A71E34",3),rep("#00798C",3), rep("#F59700",3), #define colors for ecotype pairs
+          rep("#6E5DAC",3),rep("#EBADB5",3), rep("#B7E1D3",3),
+          rep("#FFD085",3),rep("#CEACEC",3))
+eco <- c(rep(17,12),rep(19,12)) #define symbols for ecotypes
+
+#Plot PCA, change k for visualizing different numbers of components
+par(mfrow=c(1,1))
+plotPCA(y$counts,col=locs, k=3, cex = 1.7, pch=eco, main = "PCA of transcripts counts", labels = F)
+
+# Plot multidimensional scaling of distances
+# Distances on the plot approximate the log2 fold change in expression between samples
+par(mfrow=c(1,2))
+plotMDS(y,col=locs, pch = eco, cex = 1.7, main="MDS of expression", dim.plot = c(1,2),
+        xlab="logFC Dimension 1",ylab="logFC Dimension 2")
+plotMDS(y,col=locs, pch = eco, cex = 1.7, main="MDS of expression", dim.plot = c(2,3),
+        xlab="logFC Dimension 2",ylab="logFC Dimension 3")
+```
