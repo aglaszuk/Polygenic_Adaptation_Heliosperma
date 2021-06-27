@@ -1,4 +1,4 @@
-# RNA-seq analysis pipeline
+# Steps to perform differential expression analysis
 
 
 Create table of read counts using FeatureCounts v. 1.6.3. Takes as input the individual bam files mapped using STAR.
@@ -15,4 +15,4 @@ Create table of read counts using FeatureCounts v. 1.6.3. Takes as input the ind
  
   ```
 
-Scripts to perform DE analysis are above.
+Use DEanalysis.Rmd and DEanalysis_dataInspect.Rmd scripts for differential expression.
