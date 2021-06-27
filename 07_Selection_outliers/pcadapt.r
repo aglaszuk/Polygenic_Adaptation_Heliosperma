@@ -3,11 +3,11 @@
 # Author: Aglaia Szukala, aglaia.szukala [at] univie.ac.at
 # Title: selectOutlierSNPs.r
 
-# Usage: pcadapt.r input.bed input.vcf outdir K pop_names.txt pch.txt
+# Usage: pcadapt.r input.bed outdir K pop_names.txt pch.txt
 # input.bed is a .bed file that was produced using plink [plink2 --vcf input.vcf --make-bed --out out --allow-extra-chr]
 # K=number of populations in dataset. The choice of K should be checked looking at the output plot "Variance_explained.pdf"
-# pop_names.txt and eco.txt are tables with population and ecotype identifiers respectively
-# Script to run pcaadapt and outflank to detect Fst outlier SNPs that overlap between these two methods
+# pop_names.txt, pch.txt are tables with population, ecotype and pch (plot) identifiers respectively
+# Script to run pcaadapt to detect Fst outlier SNPs that overlap between these two methods
 
 # Load required packages
 library("devtools")
