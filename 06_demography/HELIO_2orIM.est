@@ -1,0 +1,34 @@
+// Priors and rules file
+// *********************
+
+[PARAMETERS]
+//#isInt? #name	#dist.#min	#max
+//all N are in number of haploid individuals
+1 NA1 unif 50 50000 output
+1 NA3 unif 50 50000 output
+1 NM1 unif 50 5000 output
+1 NM3 unif 50 5000 output
+1 TDIV1 unif 1000 100000 output
+1 TDIV2 unif 1000 100000 output
+1 TDIV3 unif 1000 100000 output
+0 mA1M1 logunif 1e-10 2 output
+0 mM1A1 logunif 1e-10 2 output
+0 mA3M3 logunif 1e-10 2 output
+0 mM3A3 logunif 1e-10 2 output
+0 mA1A3 logunif 1e-10 2 output
+0 mA1M3 logunif 1e-10 2 output
+0 mA3A1 logunif 1e-10 2 output
+0 mA3M1 logunif 1e-10 2 output
+0 mM1A3 logunif 1e-10 2 output
+0 mM1M3 logunif 1e-10 2 output
+0 mM3A1 logunif 1e-10 2 output
+0 mM3M1 logunif 1e-10 2 output
+0 mut unif 1e-8 1e-10 output
+
+[RULES]
+
+TDIV2 > TDIV3
+TDIV1 > TDIV2
+
+[COMPLEX PARAMETERS]
+
