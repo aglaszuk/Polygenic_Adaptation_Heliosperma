@@ -1,7 +1,7 @@
 # Steps to perform differential expression analysis
 
 
-Create table of read counts using FeatureCounts v. 1.6.3. Takes as input the individual bam files mapped using STAR.
+Create table of read counts using FeatureCounts v.1.6.3 (Liao et al. 2104). Takes as input the individual bam files mapped using STAR.
 ```
  
  featureCounts \
