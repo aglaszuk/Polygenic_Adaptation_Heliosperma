@@ -5,7 +5,7 @@
 for dir in *or* 
  do
   cd $dir/HELIO
-  #cat run*/best_* >> best_likelihoods.txt
+  cat run*/best_* >> best_likelihoods.txt
   cut -f 21 best_likelihoods.txt | grep -v "MaxEstLhood" | sort | head -n 1
   cut -f 21 best_likelihoods.txt | grep -v "MaxEstLhood" | sort | awk '{sum+=$1} END {print "Average: " sum/ NR}'
   cut -f 21 best_likelihoods.txt | grep -v "MaxEstLhood" | sort | head -n 10 | sed 's/-//g' > top10_MaxEstL.txt
