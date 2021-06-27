@@ -22,23 +22,6 @@ outdir <- args[3] #output directory
 pop <- read.table(args[5])
 pop_names <- paste0(pop[,1])
 
-# Read input vcf file and make genotype matrix
-# vcf1<-read.vcfR(args[1])
-# geno <- extract.gt(vcf1) # Character matrix containing the genotypes
-# geno[is.na(geno)] <- "./."
-# G <- matrix(NA, nrow = nrow(geno), ncol = ncol(geno))
-# G[geno %in% c("0/0", "0|0")] <- 0
-# G[geno %in% c("0/1", "1/0", "1|0", "0|1")] <- 1
-# G[geno %in% c("1/1", "1|1")] <- 2
-# G[geno %in% c("./.", ".|.")] <- 9
-# geno <- G
-# chromosome <- getCHROM(vcf1) # Chromosome information
-# position <- getPOS(vcf1) # Positions information 
-# locinames <- paste(chromosome, position, sep = "_")
-# row.names(geno) <- locinames
-# colnames(geno) <- pop_names
-#file_pop <- read.pcadapt(geno)
-
 # Read genotype matrix in .bed format (plink)  into pcadapt
 file_pop <- read.pcadapt(args[1], type = "bed")
 
@@ -60,7 +43,6 @@ plot(x, option = "scores", pop = pop_names)+
   labs(x = paste0("PC1 (", round((x$singular.values[1])^2*100,2),"%)"), 
        y = paste0("PC2 (", round((x$singular.values[2])^2*100,2),"%)"))+
   geom_point(aes(fill=pop_names),pch=locs_pch, cex=4,show.legend = F)+ 
-  #aes(fill="lightskyblue")+
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 dev.off()
@@ -107,7 +89,6 @@ dev.off()
 
 # Detect Fst outliers using pcadapt
 # Compute Bonferroni adjusted p-values and define ouliers (most conservative)
-# x$pvalues <- na.omit(x$pvalues) #same length as x$pass
 x <- pcadapt(file_pop, K = K, min.maf = 0.05, 
              LD.clumping = list(size = 200, thr = 0.1))
 x$padj <- p.adjust(x$pvalues, method = "bonferroni")
@@ -134,7 +115,6 @@ write.table(vcfann[rownames(vcfann) %in% out_snps,],
             sep = "\t", quote = F, row.names = F)
 
 # Plot Manhattan with outlier
-#locinames <- paste(vcfann$CHROM,vcfann$POS, sep="_")
 x$chrom <- vcfann$CHROM
 x$Tag = ifelse(as.numeric(x$chrom) %% 2 == 0, 0, 1)
 x$Tag[x$padj < 0.05] <- "firebrick"
@@ -148,7 +128,6 @@ pdf(paste0(outdir,"Manhattan.pdf"))
 plot(x, option = "manhattan") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
-#plot(-(log10(x$pvalues)),pch=16, cex=0.8) +
   geom_point(aes(fill=tag), 
              col=tag,
              pch=16, cex=0.95,
