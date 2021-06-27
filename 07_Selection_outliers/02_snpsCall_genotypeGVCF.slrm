@@ -31,5 +31,5 @@ for file in CG_trans_joint_[0-9].vcf.gz*; \
 do mv $file ${file/jointVar_/jointVar_0}; \
 done
 
-#Concatenate vcf files
+# Concatenate vcf files
 bcftools concat $(for file in *.vcf.gz; do echo "$file "; done) > jointVar.vcf
