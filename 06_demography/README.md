@@ -19,3 +19,5 @@ Examples input files for this analysis can be found in the input_files folder.
   
 To launch several replicate runs of the anaysis on the Life Science Compute Cluster (LISC) (https://cube.univie.ac.at/lisc) we used the 00_launchFSC_HELIO.sh script.
 The script 01_extract_bestL.sh was used to extract best likelihood average estimates across all runs and obtain the top 10 models parameters estimates to produce simulated sfs to be compared with the observed sfs.
+  
+The R scripts in the process_sfs folder can be used to convert the sfs from angsd output format into fastSimcoal format and fold the spectrum.
