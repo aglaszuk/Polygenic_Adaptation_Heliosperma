@@ -1,4 +1,4 @@
 
 # Input files
 
-Example input files for the 1-origin and 2-origins models to be tested in fastSimcoal2 v.2.6.0.3 (Excoffier et al. 2013).
+Example input files for the IM 1-origin and IM 2-origins models, when simulating ecotype pairs 1 and 3 setting T2>T3.
