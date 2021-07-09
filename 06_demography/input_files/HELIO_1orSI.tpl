@@ -6,10 +6,10 @@ NA3
 NM1
 NM3
 //Sample sizes
-14
-11
-14
-11
+28
+22
+28
+22
 //Growth rates	: negative growth implies population expansion
 0
 0
