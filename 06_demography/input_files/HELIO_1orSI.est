@@ -11,7 +11,7 @@
 1 TDIV1 unif 1000 100000 output
 1 TDIV2 unif 1000 100000 output
 1 TDIV3 unif 1000 100000 output
-0 mut unif 1e-7 1e-10 output
+0 mut unif 1e-8 1e-10 output
 
 [RULES]
 
