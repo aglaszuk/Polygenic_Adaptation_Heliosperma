@@ -1,7 +1,8 @@
 
 # Estimate genotype likelihoods and analyze genetic diversity and structure
 
-We used a the following pipeline to estimate genotype likelihoods using ANGSD v.0.931 (Korneliussen et al. 2014).
+We used the following pipeline to estimate genotype likelihoods using ANGSD v.0.931 (Korneliussen et al. 2014).
+
 Briefly, after mapping individual files, we added read groups for each individual, sorted by coordinate and removed duplicates using PicardTools v.2.9.2 (https://broadinstitute.github.io/picard/). 
 ```
 for file in *.bam; \
@@ -63,7 +64,7 @@ java -Xmx32g \
 -U ALLOW_N_CIGAR_READS; \
 done
 ```
-Then realignment around indels was performed.
+As next step realignment around indels was performed.
 ```
 for file in ./*split.bam; \
 do \
@@ -94,7 +95,7 @@ samtools index $file; \
 done
 ```
 ANGSD v.0.931 was then run using as input a filelist listing all bamfile. The -sites option was used to limit the analyses to asubset of sites at fourfold degenerate positions.
-
+```
 ls *realigned.bam > bam.filelist
 
 angsd \
