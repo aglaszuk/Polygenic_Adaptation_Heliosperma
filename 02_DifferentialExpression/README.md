@@ -14,7 +14,7 @@ First, we created a table of read counts using FeatureCounts v.1.6.3 (Liao et al
  *.bam
  
   ```
-The table of read counts output by FeatureCounts was further processed using the following command to keep only the first column (genes) and the columns with the individual samples, and remove .
+The table of read counts output by FeatureCounts was further processed using the following command to keep only the first column (genes) and the columns with the individual samples, and remove leftovers of previous steps from the samples IDs.
 ```
 grep -v "^#" counts.txt | \
 cut -f 1,7- | \
