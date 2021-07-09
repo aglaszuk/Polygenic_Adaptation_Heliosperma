@@ -21,4 +21,4 @@ cut -f 1,7- | \
 sed 's/.map2.sortedByCoord.out.bam//g' > counts.edit.txt
 ```
 This table was used as input matrix to perform differential expression analyses in R. 
-The scripts DEanalysis.Rmd and DEanalysis_dataInspect.Rmd were used for this task.
+The scripts DEanalysis.Rmd, DEfunctions.R and DEanalysis_dataInspect.Rmd were used for this task.
