@@ -94,7 +94,7 @@ do \
 samtools index $file; \
 done
 ```
-ANGSD v.0.931 was then run using as input a filelist listing all bamfile. The -sites option was used to limit the analyses to asubset of sites at fourfold degenerate positions.
+ANGSD v.0.931 was then run using as input a filelist listing all bamfile. The *-sites* option was used to limit the analyses to asubset of sites at fourfold degenerate (FFD) positions. The FFD positions were annotated using the R script getFFDpositions.Rmd.
 ```
 ls *realigned.bam > bam.filelist
 
