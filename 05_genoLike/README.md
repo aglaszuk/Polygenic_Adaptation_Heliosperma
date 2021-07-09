@@ -94,7 +94,7 @@ do \
 samtools index $file; \
 done
 ```
-ANGSD v.0.931 was then run using as input a filelist listing all bam files. The *-sites* option was used to limit the analyses to asubset of sites at fourfold degenerate (FFD) positions. The FFD positions were annotated using the R script getFFDpositions.Rmd. To obtain unlinked positions with a minimum distance 10 KB we used the script filterSNPs_unlinked.r.
+ANGSD v.0.931 was then run using as input a filelist listing all bam files. The *-sites* option was used to limit the analyses to a subset of sites at fourfold degenerate (FFD) positions. The FFD positions were annotated using the R script getFFDpositions.Rmd. To obtain unlinked positions with a minimum distance 10 KB we used the script filterSNPs_unlinked.r.
 ```
 ls *realigned.bam > bam.filelist
 
