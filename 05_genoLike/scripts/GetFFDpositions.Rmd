@@ -1,0 +1,54 @@
+---
+title: "Perform variants annotation of a reference genome with structural annotation file (gff)"
+output: html_notebook
+Author: Aglaia Szukala, aglaia.szukala [at] univie.ac.at
+---
+
+Load libraries
+```{r}
+library("VariantAnnotation")
+library("GenomicFeatures")
+library("ggplot2")
+```
+
+Make a TxDb object from a GFF file
+```{r}
+setwd("")
+mttx <- makeTxDbFromGFF("genome.annotation.gff",
+                        format = c("gff3"),
+                        dbxrefTag = c("ID"))
+```
+
+Load variants in vcf format and reference genome fasta file
+```{r}
+mtvcf =readRDS("GATK4.variants.recode.rds")
+seqinfo(mtvcf)
+geno(mtvcf)
+
+fas = FaFile("genome.fasta")
+```
+
+Find variants that overlap with gene annotations and compute the effect of the variant
+```{r}
+vareff = predictCoding(mtvcf,mttx,fas)
+saveRDS(vareff,"VariantsEffects.rds")
+# names(vareff) 
+# start(vareff)
+# vareff$REF
+# vareff[1,]
+# vareff[2,]
+```
+
+Filter table such that you keep only synonymous substitutions in 4fold degenerate amino acids
+```{r}
+synonymous <- vareff[vareff$CONSEQUENCE == "synonymous",]
+FourFold <- synonymous[synonymous$REFAA == c("A","L","S","V","P","T","R","G")]
+write.table(synonymous, file="synonymousPos.txt", sep = "\t")
+write.table(FourFold, file="FFDsites.txt", sep = "\t")
+```
+
+Convert vareff to a data frame
+```{r}
+vareff.frame <- as.data.frame(vareff, row.names = NULL) #I have a problem with column 8 (alt allele)
+VarAllele <- FourFold[,6]
+```
