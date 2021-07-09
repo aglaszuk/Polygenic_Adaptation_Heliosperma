@@ -10,3 +10,7 @@ For each combination of two ecotype pairs we evaluated six models:
 * IM: 1-origin, T3<T2
 * IM: 2-origins, T2>T3
 * IM: 2-origins, T3>T2
+
+Where SI = "strict isolation" and IM = "isolation with migration".
+
+Three files were required as input: the joint site frequency spectra (sfs) for all six combinations of four populations, a template file () and a estimation file 
