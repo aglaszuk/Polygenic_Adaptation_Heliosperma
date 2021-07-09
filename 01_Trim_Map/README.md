@@ -61,7 +61,6 @@ STAR \
 --outFileNamePrefix /path/to/2pass/${file/.fq/.map2} \
 --outFilterMismatchNoverLmax 0.04 \
 --limitBAMsortRAM 12000000000 \
---runThreadN 12 \
 --sjdbFileChrStartEnd mapping/1pass/*.out.tab; \
 done
  
