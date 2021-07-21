@@ -1,5 +1,5 @@
 # Script to filter unlinked positions from a chromosome + position list
-# The input will be a contig + position list 
+# The input will be a tab separated contig + position list 
 # The output is a subset of this list including only SNPs that have a minimum distance (e.g. 10 Kb) between them
 
 library(dplyr)
