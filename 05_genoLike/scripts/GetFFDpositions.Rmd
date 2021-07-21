@@ -49,6 +49,6 @@ write.table(FourFold, file="FFDsites.txt", sep = "\t")
 
 Convert vareff to a data frame
 ```{r}
-vareff.frame <- as.data.frame(vareff, row.names = NULL) #I have a problem with column 8 (alt allele)
+vareff.frame <- as.data.frame(vareff, row.names = NULL) 
 VarAllele <- FourFold[,6]
 ```
