@@ -113,3 +113,7 @@ angsd \
 -out ./genolike \
 -sites FFD_ContigPos.txt
 ```
+PCAngsd (Meisner and Albrechtsen 2018) was used to produce a matrix of covariances of genotype likelihoods, based on which principal component analysis was performed in R. 
+```
+pcangsd.py -beagle genolike.beagle.gz -o ffd_unlinked
+```
