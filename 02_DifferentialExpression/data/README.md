@@ -5,4 +5,3 @@ Description:
 - Column 2 to 25: individual samples
 
 [raw_gene_counts_matrix_CG.txt](https://github.com/aglaszuk/Polygenic_Adaptation_Heliosperma/files/7104991/raw_gene_counts_matrix_CG.txt)
-[raw_gene_counts_matrix.txt](https://github.com/aglaszuk/Polygenic_Adaptation_Heliosperma/files/7104991/raw_gene_counts_matrix.txt)
