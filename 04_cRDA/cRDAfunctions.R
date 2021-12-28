@@ -34,7 +34,7 @@ plot_rda = function(rda){
   ordihull(helio.rda, env$ecotype, col=col, lwd=1)
   rp <- vector('expression',1)
   rp[2] <- substitute(expression(italic(P) == valueB), 
-                    list(valueB = format(0.18, digits = 2)))[2]
+                    list(valueB = format(alpha, digits = 2)))[2]
   legend("bottomleft",legend = rp, bty = 'n')
 }
 
