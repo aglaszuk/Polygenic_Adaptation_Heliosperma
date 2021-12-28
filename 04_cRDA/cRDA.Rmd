@@ -40,7 +40,7 @@ env = makeEnv(ecotype, locality, data)
 
 Perform cRDA analysis
 ```{r}
-helio.rda <- helio_rda(data, env)
+helio.rda <- helio_rda(cpm(data), env)
 ```
 
 Check significance of the model
