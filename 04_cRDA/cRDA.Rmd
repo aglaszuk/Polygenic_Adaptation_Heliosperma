@@ -58,6 +58,7 @@ write.table(x = scores_helio.rda, "score_RDA1_cond.txt", sep="\t")
 
 Plot RDA
 ```{r}
+alpha <- 0.18
 plot_rda(helio.rda)
 ```
 
