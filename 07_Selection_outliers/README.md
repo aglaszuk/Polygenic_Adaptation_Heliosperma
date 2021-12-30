@@ -37,7 +37,7 @@ popV$counter.saf.idx \ #V=H.veselskyi (montane ecotype)
 > popP$counter.popV$counter.ml; \
 done
 ```
-Prepare Fst for easy window analysis and output the Bhatia estimator (see [Bhatia et al (2013)](https://pubmed.ncbi.nlm.nih.gov/23861382/)
+Prepare Fst for easy window analysis and output the Bhatia estimator (see [Bhatia et al (2013)](https://pubmed.ncbi.nlm.nih.gov/23861382/))
 ```
 for counter in 1 3; \
 do \
