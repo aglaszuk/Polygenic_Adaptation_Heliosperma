@@ -1,7 +1,7 @@
 
 # Compute Fst by gene using ANGSD 
 
-ANGSD genome-wide saf files were computed for both ecotype populations from pair 1 and 3.
+ANGSD genome-wide saf files were computed for alpine and montane ecotype populations from pair 1 and 3.
 ```
 for counter in 1 3; \
 do \
