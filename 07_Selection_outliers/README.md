@@ -1,7 +1,7 @@
 
 # Pipeline to compute Fst by gene using ANGSD 
 
-ANGSD saf files were computed for both ecotype populations from pair 1 and 3.
+ANGSD genome-wide saf files were computed for both ecotype populations from pair 1 and 3.
 ```
 for counter in 1 3; \
 do \
@@ -37,7 +37,7 @@ popV$counter.saf.idx \ #V=H.veselskyi (montane ecotype)
 > popP$counter.popV$counter.ml; \
 done
 ```
-Prepare Fst for easy window analysis and output the Bhatia estimator
+Prepare Fst for easy window analysis and output the Bhatia estimator (Click [Bhatia et al (2013)](https://pubmed.ncbi.nlm.nih.gov/23861382/)
 ```
 for counter in 1 3; \
 do \
@@ -50,9 +50,12 @@ popV$counter.saf.idx \
 -whichFst 1; \
 done
 ```
-Print Fst files
+Print numerator and denominator of Bhatia Fst per site estimator 
 ```
 /path/to/realSFS fst print P1V1.fst.idx > P1V1.fst.txt
 /path/to/realSFS fst print P3V3.fst.idx > P3V3.fst.txt
 ```
-Use the script fstByGene.r to compute Fst values by gene
+Sum numerator and denominator across sites in a gene region and take the ratio of the sums to get the estimate. This can be done using the R script fstByGene.r 
+```
+Rscript fstByGene.r P1V1.fst.txt gene.choord.bed out_file_1
+Rscript fstByGene.r P3V3.fst.txt gene.choord.bed out_file_3
