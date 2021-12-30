@@ -1,7 +1,7 @@
 
-# Pipeline to compute by gene Fst using ANGSD 
+# Pipeline to compute Fst by gene using ANGSD 
 
-Angsd Saf files were computed for both ecotype populations from pair 1 and 3.
+ANGSD saf files were computed for both ecotype populations from pair 1 and 3.
 ```
 for counter in 1 3; \
 do \
@@ -9,18 +9,18 @@ for i in list*$counter; \
 do \
 angsd \
 -b $i \
--anc ../../refGenome/genome.scf.fasta \
--out ../review_Fst/${i/list/pop} \
+-anc path/to/genome.scf.fasta \
+-out path/to/outdir/${i/list/pop} \
 -dosaf 1 \
 -GL 2 \
 -minQ 20 \
 -minMapQ 30 \
--minInd 8 \
+-minInd 7 \
 -P 8 \
 -skipTriallelic 1 \
 -doMajorMinor 1 \
 -doCounts 1 \
--setMinDepthInd 10 \
+-setMinDepthInd 4 \
 -setMaxDepthInd 150; \
 done; \
 done
@@ -55,3 +55,4 @@ Print Fst files
 /path/to/realSFS fst print P1V1.fst.idx > P1V1.fst.txt
 /path/to/realSFS fst print P3V3.fst.idx > P3V3.fst.txt
 ```
+Use the script fstByGene.r to compute Fst values by gene
