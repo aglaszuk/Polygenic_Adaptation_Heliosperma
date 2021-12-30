@@ -1,5 +1,5 @@
 
-# Pipeline to compute Fst by gene using ANGSD 
+# Compute Fst by gene using ANGSD 
 
 ANGSD genome-wide saf files were computed for both ecotype populations from pair 1 and 3.
 ```
