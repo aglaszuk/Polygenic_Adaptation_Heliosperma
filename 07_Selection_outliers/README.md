@@ -59,3 +59,5 @@ Sum numerator and denominator across sites in a gene region and take the ratio o
 ```
 Rscript fstByGene.r P1V1.fst.txt gene.choord.bed out_file_1
 Rscript fstByGene.r P3V3.fst.txt gene.choord.bed out_file_3
+```
+The loci falling in the top 5% of the Fst distribution were defined as Fst outliers.
