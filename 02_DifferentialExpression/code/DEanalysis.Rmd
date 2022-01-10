@@ -21,8 +21,13 @@ require("gridExtra")
 
 Load functions
 ```{r}
-setwd("")
+setwd("path/to/directory")
 source("DEfunctions.R")
+```
+
+Set output directory
+```{r}
+outdir <- "path/to/directory"
 ```
 
 Trimm Genes with low counts keeping only genes with mean(cpm(x)>1) and save trimmed table of counts
