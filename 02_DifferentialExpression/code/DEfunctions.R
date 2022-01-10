@@ -49,19 +49,19 @@ LRT_test = function (contr, glm, col, l){
   print(paste0("Number of genes overexpressed in L: ", DEG_Lup))
   # save tables with DEG before and after multiple testing correction
   write.table(row.names(res)[res$PValue < 0.05 & res$logFC < 0],
-              file=paste0("DEG_lists/Hup_",l,"_pval0.05.txt"), quote = F, 
+              file=paste0(outdir,"Hup_",l,"_pval0.05.txt"), quote = F, 
               row.names = F, col.names = F)
   write.table(row.names(res)[res$PValue < 0.05 & res$logFC > 0],
-              file=paste0("DEG_lists/Lup_",l,"_pval0.05.txt"), quote = F,
+              file=paste0(outdir,"Lup_",l,"_pval0.05.txt"), quote = F,
               row.names = F, col.names = F)
   write.table(row.names(res)[res$padj < 0.05 & res$logFC < 0],
-              file=paste0("DEG_lists/Hup_",l,"_pval0.05.txt"), quote = F, 
+              file=paste0(outdir,"Hup_",l,"_pval0.05.txt"), quote = F, 
               row.names = F, col.names = F)
   write.table(row.names(res)[res$padj < 0.05 & res$logFC > 0],
-              file=paste0("DEG_lists/Lup_",l,"_pval0.05.txt"), quote = F,
+              file=paste0(outdir,"Lup_",l,"_pval0.05.txt"), quote = F,
               row.names = F, col.names = F)
   # plot MA plots and save as pdf
-  pdf(paste0("plots/MA_plots/Loc",l,".pdf"))
+  pdf(paste0(outdir,"Loc",l,".pdf"))
   plot(res$logCPM,res$logFC, col="cornsilk2",
        xlab="average expression (log(cpm))",ylab="log(FC)",
        cex.main = 2,cex.lab=1.55,
@@ -91,7 +91,7 @@ LRT_test_loc = function (contr, glm, l1,l2){
   print(paste0("Number of DEG: ", DEG))
   print(paste0("Number of genes underexpressed in ",l1,": ", DEG_1up))
   print(paste0("Number of genes overexpressed in ",l2,": ", DEG_2up))
-  pdf(paste0("plots/MA_plots/Loc",l1,"_",l2,".pdf"))
+  pdf(paste0(outdir,"Loc",l1,"_",l2,".pdf"))
   plot(res$logCPM,res$logFC, col="cornsilk2", cex=0.5,
        xlab="average expression (log(cpm))",ylab="log(FC)",
        cex.main = 1.2,cex.lab=1,
@@ -125,7 +125,7 @@ makeGOplotTable <- function(contr,glm){
   # resGOplot_Lup = resGOplot[resGOplot$logFC>0,]
   #resGOplot<-return(resGOplot)
   write.table(resGOplot, 
-              file = paste0("GOplot_tables/DEG_",lrt$comparison,".txt"),
+              file = paste0(outdir,"DEG_",lrt$comparison,".txt"),
               #quote = F,
               row.names = T,
               col.names = T)
@@ -149,13 +149,13 @@ findOverlapsPair = function (contr1, contr2, col1, col2, l1,l2){
                      res2$padj<0.05 & res2$logFC<0)
   print(paste0("Number of overlapping DEG overexpressed in L: ",L_overlap))
   print(paste0("Number of overlapping DEG underexpressed in L: ",H_overlap))
-  write.table(Hup_1,file = paste0("Hup_",lrt1$comparison,".txt"),
+  write.table(Hup_1,file = paste0(outdir,"Hup_",lrt1$comparison,".txt"),
               quote = F, row.names = F, col.names = F)
-  write.table(Lup_1,file = paste0("Lup_",lrt1$comparison,".txt"),
+  write.table(Lup_1,file = paste0(outdir,"Lup_",lrt1$comparison,".txt"),
               quote = F, row.names = F, col.names = F)
-  write.table(Hup_2,file = paste0("Hup_",lrt2$comparison,".txt"),
+  write.table(Hup_2,file = paste0(outdir,"Hup_",lrt2$comparison,".txt"),
               quote = F, row.names = F, col.names = F)
-  write.table(Lup_2,file = paste0("Lup_",lrt2$comparison,".txt"),
+  write.table(Lup_2,file = paste0(outdir,"Lup_",lrt2$comparison,".txt"),
               quote = F, row.names = F, col.names = F)
   plot(res1$logFC,res2$logFC,
        xlim=c(-11,11),ylim=c(-11,11),
