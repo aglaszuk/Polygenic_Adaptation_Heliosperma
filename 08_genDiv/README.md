@@ -2,6 +2,7 @@
 # Compute pi and theta Watterson using ANGSD 
 
 ANGSD genome-wide saf files were computed for alpine and montane ecotype populations from pair 1 and 3.
+Note:For Tajima's D estimates we used only FFD sites by adding the -sites option.
 ```
 for i in list*; \
 do \
@@ -18,7 +19,7 @@ angsd \
 -doMajorMinor 1; \
 done
 ```
-Obtain the maximum likelihood estimate of the folded SFS and calculate thetas for each site. For Tajima's D estimates we used only FFD sites by adding the -sites option.
+Obtain the maximum likelihood estimate of the folded SFS and calculate thetas for each site. 
 ```
 for i in *.saf.idx; \
 do \
