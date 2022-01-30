@@ -1,5 +1,5 @@
 
-# Estimate genotype likelihoods and analyze genetic diversity and structure
+# Estimate genotype likelihoods and analyze genetic structure
 
 We used the following pipeline to estimate genotype likelihoods using ANGSD v.0.931 (Korneliussen et al. 2014).
 
