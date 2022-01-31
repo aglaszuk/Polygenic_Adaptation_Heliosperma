@@ -1,7 +1,7 @@
 
 # Compute pi, theta Watterson, and Tajima's D using ANGSD 
 
-ANGSD genome-wide saf files were computed for alpine and montane ecotype populations from pair 1 and 3.
+ANGSD genome-wide saf files were computed for alpine and montane ecotype populations from pair 1 and 3. Each input file contains the list of individual bam files for a population.
 ```
 for i in list*; \
 do \
