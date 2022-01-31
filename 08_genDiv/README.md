@@ -1,8 +1,7 @@
 
-# Compute pi and theta Watterson using ANGSD 
+# Compute pi, theta Watterson, and Tajima's D using ANGSD 
 
 ANGSD genome-wide saf files were computed for alpine and montane ecotype populations from pair 1 and 3.
-Note:For Tajima's D estimates we used only FFD sites by adding the -sites option.
 ```
 for i in list*; \
 do \
@@ -72,18 +71,23 @@ analyze <- function(filename){
   # Exclude NA values
   data <- na.omit(data)
   # Divide each tP and tW value by the number of sites in the window
+  data$TajimaWeight <- data$Tajima/data$totalSites
   data$tPWeight <- data$tP/data$totalSites
   data$tWWeight <- data$tW/data$totalSites
   # Compute mean values and standard deviation
+  m_Taj <- mean(data$TajimaWeight)
+  sd_Taj <- sd(data$TajimaWeight)
   m_tP <- mean(data$tPWeight)
   sd_tP <- sd(data$tPWeight)
   m_tW <- mean(data$tWWeight)
   sd_tW <- sd(data$tWWeight)
   
-  dat_out <- c(m_tP,m_tW,sd_tP,sd_tW)
-  out <- as.data.frame(matrix(data = dat_out, nrow = 2, ncol = 2))
+  dat_out <- c(m_Taj,m_tP,
+               m_tW,sd_Taj,
+               sd_tP,sd_tW)
+  out <- as.data.frame(matrix(data = dat_out, nrow = 3, ncol = 2))
   colnames(out) <- c("estimate","sd")
-  rownames(out) <- c("pi", "thetaW")
+  rownames(out) <- c("tajimaD", "pi", "thetaW")
   return(out)
 }
 
