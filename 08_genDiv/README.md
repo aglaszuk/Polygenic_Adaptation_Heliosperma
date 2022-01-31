@@ -70,7 +70,7 @@ analyze <- function(filename){
   data$totalSites <- data$lastPos_withData-data$firstPos_withData
   # Exclude NA values
   data <- na.omit(data)
-  # Divide each tP and tW value by the number of sites in the window
+  # Divide each TajimasD, tP and tW value by the number of variable + invariable sites in the window covered by the data
   data$TajimaWeight <- data$Tajima/data$totalSites
   data$tPWeight <- data$tP/data$totalSites
   data$tWWeight <- data$tW/data$totalSites
